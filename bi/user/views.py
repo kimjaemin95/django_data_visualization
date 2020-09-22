@@ -2,30 +2,49 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
+from .forms import LoginForm
 
 
 # Create your views here.
+def home(request):
+    user_id = request.session.get('user')
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+        return HttpResponse('{}님 로그인 하셨습니다.'.format(str(user.username)))
+    return HttpResponse('This is home')
+
+
 def login(request):
-    if request.method == 'GET':
-        print('login get')
-        return render(request, 'login.html')
-    elif request.method == 'POST':
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
+    form = LoginForm()
+    return render(request, 'login.html', {'form':form})
+    # if request.method == 'GET':
+    #     return render(request, 'login.html')
+    #
+    # elif request.method == 'POST':
+    #     username = request.POST.get('username', None)
+    #     password = request.POST.get('password', None)
+    #
+    #     res_data = dict()
+    #     if not (username and password):
+    #         res_data['error'] = '빈 입력 값이 있습니다.'
+    #     else:
+    #         user = User.objects.get(username=username)
+    #
+    #         if check_password(password, user.password):
+    #             request.session['user'] = user.id
+    #             return redirect('/')
+    #         else :
+    #             res_data['error'] = '비밀번호가 틀렸습니다.'
+    #
+    #
+    #     return render(request, 'login.html', res_data)
 
-        res_data = dict()
-        if not (username and password):
-            res_data['error'] = '빈 입력 값이 있습니다.'
-        else:
-            user = User.objects.get(username=username)
-            print(user)
-            if check_password(password, user.password):
-                pass
-            else :
-                res_data['error'] = '비밀번호가 틀렸습니다.'
 
-
-        return render(request, 'login.html', res_data)
+def logout(request):
+    if request.session.get('user'):
+        del(request.session['user'])
+    return redirect('/')
 
 
 def register(request):
@@ -50,6 +69,7 @@ def register(request):
                 password=make_password(password),
             )
             user.save()
+            return redirect('/user/login')
 
         return render(request, 'register.html', res_data)
 
