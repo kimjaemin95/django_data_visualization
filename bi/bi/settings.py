@@ -80,11 +80,40 @@ WSGI_APPLICATION = 'bi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'bi',
+        'HOST': 'DESKTOP-F5JE1BA\SQLEXPRESS',
+        'PORT' : '1433',
+        'USER': 'jmkim',
+        'PASSWORD': 'dlqm11',
+        # 'USER': 'lance@dms-bi-db-service.database.windows.net',
+        # 'PASSWORD': '[P@ssw0rd][P@ssw0rd]',
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 11.0',
+            'unicode_results':True,
+        },
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'site',
+        'HOST': 'dms-bi-db-service.database.windows.net',
+        'PORT' : '1433',
+        'USER': 'lance@dms-bi-db-service.database.windows.net',
+        'PASSWORD': '[P@ssw0rd][P@ssw0rd]',
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 11.0', or ODBC Driver 13 for SQL Server
+            'unicode_results':True,
+        },
+    }
+}
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
