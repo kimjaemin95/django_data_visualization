@@ -3,6 +3,15 @@ from django.db import models
 # Create your models here.
 
 class Tag(models.Model):
-    pass
+    name = models.CharField(max_length=32, verbose_name='태그명')
+    registered_date = models.DateTimeField(auto_now_add=True, verbose_name='등록시간')
+
+    class Meta:
+        db_table = 'tag'
+        verbose_name = '태그'
+        verbose_name_plural = '태그'
+
+    def __str__(self):
+        return self.name
 
 
