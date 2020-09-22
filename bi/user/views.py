@@ -8,11 +8,12 @@ from .forms import LoginForm
 # Create your views here.
 def home(request):
     user_id = request.session.get('user')
+    #
+    # if user_id:
+    #     user = User.objects.get(pk=user_id)
+    #     # return HttpResponse('{}님 로그인 하셨습니다.'.format(str(user.username)))
 
-    if user_id:
-        user = User.objects.get(pk=user_id)
-        return HttpResponse('{}님 로그인 하셨습니다.'.format(str(user.username)))
-    return HttpResponse('This is home')
+    return render(request, 'home.html')
 
 
 def login(request):
