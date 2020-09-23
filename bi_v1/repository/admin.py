@@ -5,7 +5,7 @@ from .models import VmsDevice
 
 
 class VmsDeviceAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ('id','username', 'password')
+    list_display = ('id','dev_serial', 'dev_name', 'model_id', 'vms_id', 'dev_type', 'sdc_ins_time', 'sdc_upd_time')
+
 
 admin.site.register(VmsDevice, VmsDeviceAdmin)
