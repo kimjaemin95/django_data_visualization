@@ -6,8 +6,8 @@ from django.contrib.auth.hashers import make_password, check_password
 
 
 # Create your views here.
-def line(request):
+def vms_device(request):
     '''
-    http://127.0.0.1:8000/graph/line/
+    http://127.0.0.1:8000/report/vms_device/
     '''
-    return render(request, 'line.html')
+    return render(request, 'bi_vms_device.html')
