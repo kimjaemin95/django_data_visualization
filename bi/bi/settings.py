@@ -80,20 +80,8 @@ WSGI_APPLICATION = 'bi.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'bi',
-        'HOST': 'DESKTOP-F5JE1BA\SQLEXPRESS',
-        'PORT' : '1433',
-        'USER': 'jmkim',
-        'PASSWORD': 'dlqm11',
-        # 'USER': 'lance@dms-bi-db-service.database.windows.net',
-        # 'PASSWORD': '[P@ssw0rd][P@ssw0rd]',
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 11.0',
-            'unicode_results':True,
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 '''
