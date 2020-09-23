@@ -20,6 +20,6 @@ class VmsDevice(models.Model):
         verbose_name = 'VMS DEVICE'
         verbose_name_plural = 'VMS DEVICE'
 
-    # def __str__(self):
-    #     return self.username
+    def __str__(self):
+        return self.dev_serial
 
