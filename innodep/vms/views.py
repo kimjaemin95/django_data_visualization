@@ -1,8 +1,10 @@
+# -*- coding:utf-8 -*-
+import json
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from .models import *
-
+from collections import Counter  # 중복 수 체크
 
 '''
 http://pythonstudy.xyz/python/article/310-Django-%EB%AA%A8%EB%8D%B8-API
@@ -35,7 +37,15 @@ def vms_device(request):
 
 
 def vms_device_analysis(request):
+    '''http://127.0.0.1:8000/vms/vms_device_analysis/'''
     device = VmsDevice.objects.all()
+    locations_list = list()
     for d in device:
-        print(d.dev_name)
-    return JsonResponse({'data':'test'})
+        try:
+            location = d.dev_name.split(';')[2].split(' ')[0]
+        except Exception as e:
+            location = '데이터오류'
+        locations_list.append(location)
+
+    data = Counter(locations_list)
+    return JsonResponse({'data':data}, content_type=u"application/json")
