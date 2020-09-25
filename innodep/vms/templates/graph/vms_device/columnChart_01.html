@@ -24,6 +24,17 @@
         ['YOUNGKOOK', 30, 20, "#a5dff9"],
         ['Innodep Inc', 29, 20, "#a5dff9"],
         ['Hikvision Digital', 25, 20, "#a5dff9"],
+        ['TRUEN', 200, 20, "#ef5285"],
+        ['SAMSUNG TEHCH...', 131, 20, "#a5dff9"],
+        ['NEOTECH', 95, 20, "#a5dff9"],
+        ['AXIS', 57, 20, "#a5dff9"],
+        ['Innodep Inc', 42, 20, "#a5dff9"],
+        ['Hikvision Digital', 42, 20, "#a5dff9"],
+        ['IDIS', 41, 20, "#a5dff9"],
+        ['LG', 38, 20, "#a5dff9"],
+        ['YOUNGKOOK', 30, 20, "#a5dff9"],
+        ['Innodep Inc', 29, 20, "#a5dff9"],
+        ['Hikvision Digital', 25, 20, "#a5dff9"],
       ]);
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -63,22 +74,34 @@
         },
         // 툴팁 속성
         tooltip: {textStyle: {color: '#000000', fontSize:15}, showColorCode: true},
+
         // 차트 배경색
         backgroundColor:{fill:'transparent', stroke:'transparent', strokeWidth:4},
-        chartArea:{width:'80%',height:'60%',backgroundColor:'transparent', overflow:'scroll'},
+        chartArea:{width:'80%',height:'60%',backgroundColor:'transparent'},
+
         //
         //explorer: { axis: 'horizontal' },
         explorer: { actions: ['dragToPan'] }, //vertical or horizontal
+        //explorer: {axis: 'vertical', actions: ['dragToPan', 'rightClickToReset',], keepInBounds: true},
         width: 800,
         height: 300,
-        //
+        numberRangeFilter:{lowValue:400},
+
+        // 막대 방향 전환 vertical or horizontal
+        orientation:'horizontal',
+
         // bar: {groupWidth: "61.8%"},
         legend: { position: "none" },
         vAxis: {
             title: 'City', gridlines:{color: 'gray', minSpacing: 40},
+            viewWindowMode: 'explicit',
+            viewWindow: {
+            max: 100,
+            min: 0
+          }
         },
         hAxis: {
-            title: 'City', textStyle:{italic:true}
+            title: 'City', textStyle:{italic:false}
         }
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));

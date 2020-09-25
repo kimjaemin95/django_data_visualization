@@ -47,6 +47,11 @@
         {% include "graph/vms_device/stackBarChart_01.html" %}
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-12">
+        {% include "graph/vms_device/googleMap.html" %}
+    </div>
+</div>
 <script>
         var data = JSON.parse('{{ data|safe }}');
         console.log(data)
