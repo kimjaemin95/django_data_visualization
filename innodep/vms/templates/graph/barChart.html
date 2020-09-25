@@ -1,0 +1,33 @@
+{% block barChart %}
+<div id="top_x_div" style="width:100%; height:300px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+    var data = new google.visualization.arrayToDataTable([
+      ['아이템들', '값', { role: 'style'}],
+      ["아이템1", 100000, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+      ["아이템2", 150000, 'color: gray'],
+    ]);
+    var options = {
+      //width: 900,
+      legend: { position: 'none' },
+      chart: { title: '김재민 테스트 바 차트',
+               subtitle: '서브제목은 따로 안할 것임' },
+      bars: 'horizontal', // "bars : horizontal or vertical"
+      axes: {
+        x: {
+          0: { side: 'bottom', label: 'x축 제목' } // Top x-axis.
+        }
+      },
+      bar: { groupWidth: "90%" },
+      colors : ['red'],
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+    chart.draw(data, options);
+    };
+</script>
+{% endblock %}

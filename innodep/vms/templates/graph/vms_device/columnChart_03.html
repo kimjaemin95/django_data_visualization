@@ -1,0 +1,83 @@
+{% block barChart %}
+<style>
+<!--#columnchart_values {-->
+<!--    overflow-x: scroll;-->
+<!--    overflow-y: hidden;-->
+<!--}-->
+</style>
+<div id="columnchart_values03" style="width:100%; height:300px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        [{label: 'Year', type: 'string'}, 'Sales',{ role: "style" } ],
+        ['TRUEN', 3047, "#ef5285"],
+        ['SAMSUNG TEHCH...', 131, "#a5dff9"],
+        ['NEOTECH', 95, "#a5dff9"],
+        ['AXIS', 57, "#a5dff9"],
+        ['Innodep Inc', 42, "#a5dff9"],
+        ['Hikvision Digital', 42, "#a5dff9"],
+        ['IDIS', 41, "#a5dff9"],
+        ['LG', 38, "#a5dff9"],
+        ['YOUNGKOOK', 30, "#a5dff9"],
+        ['Innodep Inc', 29, "#a5dff9"],
+        ['Hikvision Digital', 25, "#a5dff9"],
+      ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        // 차트 제목
+        title: "CCTV 모델별 운영현황",
+        // 차트 제목 스타일
+        titleTextStyle:{
+            color:'black',
+            fontSize:18,
+            bold:true,
+            //fontName:,
+        },
+        // 데이터 레이블 속성
+        annotations: {
+            textStyle: {
+            //fontName: 'Times-Roman',
+            fontSize: 15,
+            bold: true,
+            italic: false,
+            color: '#871b47',
+            auraColor: 'transparent',
+            opacity: 0.8
+            }
+        },
+        // 툴팁 속성
+        tooltip: {textStyle: {color: '#FF0000', fontSize:17}, showColorCode: true},
+        // 차트 배경색
+        backgroundColor:{fill:'transparent', stroke:'transparent', strokeWidth:4},
+        chartArea:{width:'80%',height:'60%',backgroundColor:'transparent', overflow:'scroll'},
+        //
+        //explorer: { axis: 'horizontal' },
+        explorer: { actions: ['dragToPan'] }, //vertical or horizontal
+        width: 800,
+        height: 300,
+        //
+        //bar: {groupWidth: "61.8%"},
+        legend: { position: "none" },
+        vAxis: {
+            title: 'City', gridlines:{color: 'gray', minSpacing: 40},
+        },
+        hAxis: {
+            title: 'City', textStyle:{italic:true}
+        }
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values03"));
+      chart.draw(view, options);
+  }
+
+</script>
+{% endblock %}

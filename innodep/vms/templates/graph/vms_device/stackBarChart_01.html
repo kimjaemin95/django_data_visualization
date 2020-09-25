@@ -1,0 +1,103 @@
+{% block barChart %}
+<style>
+<!--#columnchart_values {-->
+<!--    overflow-x: scroll;-->
+<!--    overflow-y: hidden;-->
+<!--}-->
+</style>
+<div id="stackcolumnchart_values01" style="width:100%; height:300px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("visualization", "1" ,{packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['제조사', '정상', {role:'annotation'}, '비정상', {role:'annotation'}],
+            ['TRUEN', 3047, '3047', 300, '20'],
+            ['SAMSUNG TEHCH...', 131, '131', 20, '20'],
+            ['NEOTECH', 95, '95', 20, '20'],
+            ['AXIS', 57, '57', 20, '20'],
+            ['Innodep Inc', 42, '42', 20, '20'],
+            ['Hikvision Digital', 42, '42', 20, '20'],
+            ['IDIS', 41, '41', 20, '20'],
+            ['LG', 38, '38', 20, '20'],
+            ['YOUNGKOOK', 30, '30', 20, '20'],
+            ['Innodep Inc', 29, '29', 20, '20'],
+            ['Hikvision Digital', 25, '25', 20, '20'],
+        ]);
+
+      var options = {
+        // 스택 여부, true, false, percent
+        isStacked: 'percent',
+
+        // 스택별 색상 속성
+        series: {
+            0:{color:'#a5dff9'},
+            1:{color:'#ef5285'},
+          },
+
+        // 차트 제목
+        title: "CCTV 모델별 운영현황",
+
+        // 차트 제목 스타일
+        titleTextStyle:{
+            color:'black',
+            fontSize:18,
+            bold:true,
+            //fontName:,
+        },
+
+        // 데이터 레이블 속성
+        annotations: {
+            textStyle: {
+            //fontName: 'Times-Roman',
+            fontSize: 15,
+            bold: true,
+            italic: false,
+            color: '#871b47',
+            auraColor: 'transparent',
+            opacity: 0.8
+            }
+        },
+
+        // 툴팁 속성
+        tooltip: {
+            textStyle: {color: '#FF0000', fontSize:17},
+            showColorCode: true,
+            },
+
+        // 차트 배경색
+        backgroundColor:{fill:'transparent', stroke:'transparent', strokeWidth:4},
+        chartArea:{width:'80%',height:'60%',backgroundColor:'transparent', overflow:'scroll'},
+
+        // 차트 영역 드레그 속성
+        explorer: { actions: ['dragToPan'] }, //vertical or horizontal
+
+        // 영역 높이, 넓이
+        width: 800,
+        height: 300,
+
+        // 막대 사이 여백
+        bar: {groupWidth: "61.8%"},
+
+        // 범례 속성
+        legend: {
+            position: 'top'
+            , maxLines: 3
+            },
+
+        // Y축
+        vAxis: {
+            title: 'Y축', gridlines:{color: 'gray', minSpacing: 40},
+        },
+        // X축
+        hAxis: {
+            title: 'X축', textStyle:{italic:false}
+        }
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("stackcolumnchart_values01"));
+      chart.draw(data, options);
+  }
+
+</script>
+{% endblock %}

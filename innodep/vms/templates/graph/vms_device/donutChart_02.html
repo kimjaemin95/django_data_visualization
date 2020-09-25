@@ -1,0 +1,50 @@
+{% block donutChart %}
+<style>
+    #center{
+        position: absolute;
+        top: 130px;
+        left:175px;
+        text-align: center;
+    }
+</style>
+<div id="donutchart02" style="width: 100%; height: 300px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart02);
+    function drawChart02() {
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['고정형', 3313],
+        ['회전형', 246],
+        ['비디오서버', 3],
+        ['기타', 0]
+    ]);
+
+    var options = {
+    title: 'CCTV 설치 유형별 수량',
+    titleTextStyle:{
+        color:'black',
+        fontSize:18,
+        bold:true,
+        //fontName:,
+    },
+    colors:['#a5dff9', '#ef5285', 'green', 'gray'],
+    pieSliceTextStyle:{color: 'blue'},
+    legend:{ position: 'labeled', textStyle: {color: 'black', fontSize: 16}, alignment:'center'},
+    chartArea: {width:'90%', height:'70%'},
+    pieHole: 0.65,
+    is3D:false,
+    backgroundColor: { fill:'transparent' },
+    pieSliceTextStyle: {
+        color: 'white',
+        fontSize:10,
+        },
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart02'));
+    chart.draw(data, options);
+    }
+
+</script>
+{% endblock %}
