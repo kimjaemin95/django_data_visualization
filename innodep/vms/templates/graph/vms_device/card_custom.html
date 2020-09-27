@@ -1,8 +1,6 @@
 {% block pieChart %}
-<div class="card  mb-3" style="max-width: 18rem; background-color: rgba( 215, 255, 255, 0.8 );">
-  <div class="card-header" style="font-size:1rem; font-weight:bold;">{{ title }}</div>
-  <div class="card-body ">
-    <h5 class="card-title" style="font-size:1.3rem; font-weight:bold;">{{ content }}</h5>
-  </div>
+<div class="border border-secondary rounded text-white "  style="background:#343a40;">
+  <div style="height:35px; font-size:25px">{{ content }}<span style="font-size:17px">{{ unit }}</span></div>
+  <div style="height:30px ">{{ title }}</div>
 </div>
 {% endblock %}

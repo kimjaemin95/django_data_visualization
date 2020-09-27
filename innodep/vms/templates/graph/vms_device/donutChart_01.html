@@ -1,13 +1,14 @@
 {% block donutChart %}
 <style>
     #center{
-        position: absolute;
-        top: 130px;
-        left:175px;
+        position: absolute !important;
+        top:190px !important;
+        left:200px !important;
         text-align: center;
     }
 </style>
-<div id="donutchart" style="width: 100%; height: 300px;"></div>
+{% include "graph/vms_device/sectionTitle_01.html" with title='CCTV 운영현황' %}
+<div id="donutchart" style="width: 100%; height: 350px;"></div>
 <div id="center">
     <font style="color:green;font-weight: bold;font:25px arial, sans-serif;">98.25%</font>
     <BR>
@@ -25,14 +26,14 @@
     ]);
 
     var options = {
-    title: 'CCTV 운영현황',
+    //title: 'CCTV 운영현황',
     titleTextStyle:{
         color:'black',
         fontSize:18,
         bold:true,
         //fontName:,
     },
-    colors:['#a5dff9', '#ef5285'],
+    colors:['#218380', '#FFBC42'],
     pieSliceTextStyle:{color: 'blue'},
     legend:{ position: 'labeled', textStyle: {color: 'black', fontSize: 16}, alignment:'center'},
     chartArea: {width:'90%', height:'70%'},
@@ -41,7 +42,7 @@
     backgroundColor: { fill:'transparent' },
     pieSliceTextStyle: {
         color: 'white',
-        fontSize:10,
+        fontSize:15,
         },
     };
 

@@ -23,8 +23,8 @@
 <style>
 </style>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand font-weight-bold" href="#" >VMS</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand font-weight-bold" href="#">VMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,14 +37,17 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid" style="margin-top:20px;">
-    {% block page %}
-    {% endblock %}
+<div class="background-img" style="border:1px solid transparent; background:rgb(250, 250, 250);">
+    <div class="container-fluid" style="margin-top:5px;">
+        {% block page %}
+        {% endblock %}
+    </div>
 </div>
 </body>
 <script type="text/javascript">
     {% block scripts %}
     {% endblock %}
+
 
 </script>
 </html>

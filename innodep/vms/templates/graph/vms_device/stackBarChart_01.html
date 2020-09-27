@@ -5,7 +5,8 @@
 <!--    overflow-y: hidden;-->
 <!--}-->
 </style>
-<div id="stackcolumnchart_values01" style="width:100%; height:300px;"></div>
+{% include "graph/vms_device/sectionTitle_01.html" with title='CCTV 모델별 운영현황' %}
+<div id="stackcolumnchart_values01" style="width:100%; height:410px;"></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load("visualization", "1" ,{packages:['corechart']});
@@ -32,12 +33,12 @@
 
         // 스택별 색상 속성
         series: {
-            0:{color:'#a5dff9'},
-            1:{color:'#ef5285'},
+            0:{color:'#218380'},
+            1:{color:'#FFBC42'},
           },
 
         // 차트 제목
-        title: "CCTV 모델별 운영현황",
+        //title: "CCTV 모델별 운영현황",
 
         // 차트 제목 스타일
         titleTextStyle:{
@@ -74,8 +75,8 @@
         explorer: { actions: ['dragToPan'] }, //vertical or horizontal
 
         // 영역 높이, 넓이
-        width: 800,
-        height: 300,
+        width: 950,
+        height: 400,
 
         // 막대 사이 여백
         bar: {groupWidth: "61.8%"},
@@ -87,13 +88,13 @@
             },
 
         // Y축
-        vAxis: {
-            title: 'Y축', gridlines:{color: 'gray', minSpacing: 40},
-        },
+        //vAxis: {
+        //    title: 'Y축', gridlines:{color: 'gray', minSpacing: 40},
+        //},
         // X축
-        hAxis: {
-            title: 'X축', textStyle:{italic:false}
-        }
+        //hAxis: {
+        //    title: 'X축', textStyle:{italic:false}
+        //}
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("stackcolumnchart_values01"));
       chart.draw(data, options);

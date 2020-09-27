@@ -1,0 +1,95 @@
+{% block donutChart %}
+{% include "graph/vms_device/sectionTitle_01.html" with title='CCTV 설치현황' %}
+<div id="map" class="border border-secondary rounded" style="width:100%; height:92%;  "></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20a72b80a26ba4c76211225f5175796a"></script>
+<script>
+<!--// 마커가 지도 위에 표시되도록 설정합니다-->
+<!--marker.setMap(map);-->
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new kakao.maps.LatLng(37.4666305, 126.906817899999), // 지도의 중심좌표
+        level: 6 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커를 표시할 위치와 title 객체 배열입니다
+var positions = [
+    {
+        title: 'test1',
+        latlng: new kakao.maps.LatLng(37.470488, 126.906568)
+    },
+    {
+        title: 'test2',
+        latlng: new kakao.maps.LatLng(37.4682073, 126.8907895)
+    },
+    {
+        title: 'test3',
+        latlng: new kakao.maps.LatLng(37.46444, 126.9003315)
+    },
+    {
+        title: 'test4',
+        latlng: new kakao.maps.LatLng(37.4666305, 126.9080078)
+    },
+    {
+        title: 'test5',
+        latlng: new kakao.maps.LatLng(37.462335, 126.9074)
+    },
+    {
+        title: 'test6',
+        latlng: new kakao.maps.LatLng(37.4599209, 126.9076702)
+    },
+    {
+        title: 'test7',
+        latlng: new kakao.maps.LatLng(37.4554309, 126.9041571)
+    },
+    {
+        title: 'test8',
+        latlng: new kakao.maps.LatLng(37.4537223, 126.9125289)
+    },
+    {
+        title: 'test9',
+        latlng: new kakao.maps.LatLng(37.4520329, 126.9132213)
+    },
+    {
+        title: 'test10',
+        latlng: new kakao.maps.LatLng(37.4596667, 126.9047464)
+    },
+    {
+        title: 'test11',
+        latlng: new kakao.maps.LatLng(37.4727845, 126.9030378)
+    },
+    {
+        title: 'test12',
+        latlng: new kakao.maps.LatLng(37.4755163, 126.8917036)
+    },
+    {
+        title: 'test12',
+        latlng: new kakao.maps.LatLng(35.8284724, 128.6552358)
+    }
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "http://127.0.0.1:8000/static/images/test_cctv01.png";
+
+for (var i = 0; i < positions.length; i ++) {
+
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(35, 35);
+
+    // 마커 이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    if(i%4 == 0){
+        var markerImage = new kakao.maps.MarkerImage("http://127.0.0.1:8000/static/images/test_cctv02.png", imageSize);
+    }
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지
+    });
+}
+</script>
+{% endblock %}
