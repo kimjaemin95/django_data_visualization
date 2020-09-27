@@ -5,7 +5,7 @@
 <!--    overflow-y: hidden;-->
 <!--}-->
 </style>
-{% include "graph/vms_device/sectionTitle_01.html" with title='CCTV 모델별 운영현황' %}
+{% include "graph/vms_device/sectionTitle_01.html" with fontSize='1.3rem' title='CCTV 모델별 운영현황' %}
 <div id="stackcolumnchart_values01" style="width:100%; height:410px;"></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -60,12 +60,10 @@
             opacity: 0.8
             }
         },
+        focusTarget:'category',
 
         // 툴팁 속성
-        tooltip: {
-            textStyle: {color: '#FF0000', fontSize:17},
-            showColorCode: true,
-            },
+        tooltip: {textStyle: {color: '#000000', fontSize:18}, showColorCode: true},
 
         // 차트 배경색
         backgroundColor:{fill:'transparent', stroke:'transparent', strokeWidth:4},
@@ -83,18 +81,20 @@
 
         // 범례 속성
         legend: {
-            position: 'top'
-            , maxLines: 3
+            position: 'top',
+            maxLines: 3,
+            textStyle: {color: 'white', fontSize: 17}
+
             },
 
         // Y축
-        //vAxis: {
-        //    title: 'Y축', gridlines:{color: 'gray', minSpacing: 40},
-        //},
+        vAxis: {
+             textStyle:{color:'white', fontSize:17, }
+        },
         // X축
-        //hAxis: {
-        //    title: 'X축', textStyle:{italic:false}
-        //}
+        hAxis: {
+            textStyle:{color:'white', fontSize:17, }
+        }
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("stackcolumnchart_values01"));
       chart.draw(data, options);

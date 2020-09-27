@@ -1,0 +1,46 @@
+{% block areaChart %}
+{% include "graph/vms_device/sectionTitle_01.html"  with fontSize='1.3rem' title='날짜별 CCTV 이상상태' %}
+<div id="chart_div" style="width: 100%; height: 350px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', '정상', '비정상'],
+          ['2020-09-12', 2231, 1023],
+          ['2020-09-13', 3431, 2032],
+          ['2020-09-14', 2561, 1010],
+          ['2020-09-15', 3161, 800],
+          ['2020-09-16', 3461, 700],
+          ['2020-09-17', 1261, 2000],
+          ['2020-09-18', 3361, 200],
+        ]);
+
+        var options = {
+          //title: 'Company Performance',
+          backgroundColor: { fill:'transparent' },
+          // 범례
+          legend :{position: 'top', textStyle: {color: '#F7F7F7', fontSize: 17}},
+          chartArea:{width:'80%',height:'70%',backgroundColor:'transparent'},
+          // 툴팁
+          tooltip: {textStyle: {color: '#000000', fontSize:18}, showColorCode: true},
+          // Y축
+          vAxis: {
+            minValue: 0,
+            textStyle:{color:'white', fontSize:17, }
+          },
+          // X축
+          hAxis: {
+            textStyle:{color:'white', fontSize:17, }
+          }
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+</script>
+
+{% endblock %}

@@ -21,7 +21,12 @@ body, html {
 }
 
 </style>
-<div class="row" style="text-align:center">
+<div class="row" style="padding-bottom:10px;">
+    <div class="col-lg-12">
+        {% include "graph/vms_device/sectionTitle_01.html" with title='서초구 실시간 CCTV 운영현황' fontSize='1.5rem'%}
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-2">
         {% include "graph/vms_device/card_custom.html" with title='가동률' content='98.25' unit='%'%}
     </div>
@@ -32,7 +37,7 @@ body, html {
         {% include "graph/vms_device/card_custom.html" with title='정상' content='3498' unit='대'%}
     </div>
     <div class="col-sm-2">
-        {% include "graph/vms_device/card_custom.html" with title='정상' content='3498' unit='대'%}
+        {% include "graph/vms_device/card_custom.html" with title='비정상' content='63' unit='대'%}
     </div>
     <div class="col-sm-2">
         {% include "graph/vms_device/card_custom.html" with title='고정형' content='3313' unit='대'%}
@@ -42,32 +47,33 @@ body, html {
     </div>
 </div>
 <div class="row pd-top-10">
-    <div class="col-md-3">
-        {% include "graph/vms_device/donutChart_01.html"  %}
-    </div>
-    <div class="col-md-3">
-        {% include "graph/vms_device/donutChart_02.html"  %}
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
         {% include "graph/vms_device/kakaoMaps.html" %}
     </div>
 </div>
 <div class="row pd-top-10">
-    <div class="col-md-6">
-        {% include "graph/vms_device/stackBarChart_01.html" %}
+    <div class="col-lg-3">
+        {% include "graph/vms_device/donutChart_01.html" %}
     </div>
-    <div class="col-md-6">
-        {% include "graph/vms_device/columnChart_02.html" %}
+    <div class="col-lg-3">
+        {% include "graph/vms_device/donutChart_02.html" %}
+    </div>
+    <div class="col-lg-6">
+        {% include "graph/vms_device/areaChart.html" %}
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        {% include "graph/vms_device/columnChart_01.html" %}
+<div class="row pd-top-10">
+    <div class="col-lg-6">
+        {% include "graph/vms_device/stackBarChart_01.html" %}
+    </div>
+    <div class="col-lg-6">
+        {% include "graph/vms_device/columnChart_02.html" %}
     </div>
 </div>
 <script>
         var data = JSON.parse('{{ data|safe }}');
         console.log(data)
+
 
 </script>
 {% endblock %}

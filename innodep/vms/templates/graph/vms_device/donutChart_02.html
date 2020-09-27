@@ -7,7 +7,7 @@
         text-align: center;
     }
 </style>
-{% include "graph/vms_device/sectionTitle_01.html" with title='CCTV 설치 유형별 수량' %}
+{% include "graph/vms_device/sectionTitle_01.html" with fontSize='1.3rem' title='CCTV 설치 유형별 수량' %}
 <div id="donutchart02" style="width: 100%; height: 350px;"></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -30,17 +30,15 @@
         bold:true,
         //fontName:,
     },
-    colors:['#218380', '#FFBC42', '#56445D', '#58C9B9'],
+    colors:['#265F95', '#F0BA34', '#56445D', '#58C9B9'],
     pieSliceTextStyle:{color: 'blue'},
-    legend:{ position: 'labeled', textStyle: {color: 'black', fontSize: 16}, alignment:'center'},
+    legend:{ position: 'labeled', textStyle: {color: '#FFFFFF', fontSize: 19}, alignment:'center'},
     chartArea: {width:'90%', height:'70%'},
     pieHole: 0.65,
     is3D:false,
+    pieSliceBorderColor:'transparent',
     backgroundColor: { fill:'transparent' },
-    pieSliceTextStyle: {
-        color: 'white',
-        fontSize:15,
-        },
+    pieSliceTextStyle: { color: '#F7F7F7', fontSize:20, },
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('donutchart02'));
