@@ -77,7 +77,6 @@ def home(request):
     data['업데이트'] = last_upt_str
     return render(request, 'page/home.html', {'data':json.dumps(data)})
 
-
 # Create your views here.
 def vms_device(request):
     '''

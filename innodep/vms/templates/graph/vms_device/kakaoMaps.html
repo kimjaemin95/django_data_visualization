@@ -447,7 +447,7 @@ var positions = [
 ];
 
 // 마커 이미지의 이미지 주소입니다
-var imageSrc = "http://127.0.0.1:8000/static/images/test_cctv01.png";
+var imageSrc = "/static/images/test_cctv01.png";
 
 for (var i = 0; i < positions.length; i ++) {
 
@@ -457,7 +457,7 @@ for (var i = 0; i < positions.length; i ++) {
     // 마커 이미지를 생성합니다
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     if(i%10 == 0){
-        var markerImage = new kakao.maps.MarkerImage("http://127.0.0.1:8000/static/images/test_cctv02.png", imageSize);
+        var markerImage = new kakao.maps.MarkerImage("/static/images/test_cctv02.png", imageSize);
     }
 
     // 마커를 생성합니다
